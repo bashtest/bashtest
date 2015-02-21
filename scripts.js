@@ -10,6 +10,7 @@ $(function() {
             height: document.body.clientHeight
         });
     });
+    main.page.valueHasMutated();
 
     ko.applyBindings(main, document.body);
 });
