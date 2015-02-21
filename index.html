@@ -2,15 +2,49 @@
 <html>
   <head>
     <link href="frameworks/Semantic-UI-1.9.3/dist/semantic.min.css" rel="stylesheet">
+    <script src="frameworks/jquery.min.js"></script>
     <script src="frameworks/Semantic-UI-1.9.3/dist/semantic.min.js"></script>
     <script src="frameworks/knockout-3.3.0.js"></script>
     <link href="styles.css" rel="stylesheet">
-    <script src="srcipts.js"></script>
+    <script src="scripts.js"></script>
     <title>Тест на уровень знаний башкирского языка</title>
   </head>
   <body>
-    <div class="ui active inverted dimmer">
-      <div class="ui text loader">Загрузка...!</div>
+    <div class="ui page grid">
+      <div class="ui two wide column">&nbsp;</div>
+      <div class="ui twelve wide column centeredcontent"><br/><br/><img src="tempimage.png" class="ui small circular image"/>
+        <h1 class="ui header">Узнайте, насколько хорошо вы владеете башкирским языком</h1>
+        <h3 class="ui header">Дополнительный текст с пояснениями</h3>
+        <div class="ui yellow huge button">Начать</div>
+      </div>
+      <div class="ui two wide column">&nbsp;</div>
+      <div class="ui eight wide column"><br/><strong>Copyright</strong></div>
+      <div class="ui eight wide column">
+        <div class="ui horizontal list"><a href="#" class="item"><img src="tempimage.png" class="ui avatar image"/>
+            <div class="content itemcontent">Башкирские проекты</div></a><a href="#" class="item"><img src="tempimage.png" class="ui avatar image"/>
+            <div class="content itemcontent">Белемле башкорт</div></a></div>
+      </div>
     </div>
+    <div class="ui page grid">
+      <div class="ui sixteen wide column"><br/>
+        <div data-value='4' data-total='30' class="ui yellow small progress">
+          <div class="bar"></div>
+        </div>
+      </div>
+      <div class="ui four wide column">
+        <h1>4/30</h1>
+      </div>
+      <div class="ui eight wide column centeredcontent"><img src="tempimage.png" class="ui tiny circular image"/>
+        <h3>Выберите правильный перевод</h3>
+        <h1>укымышлы</h1>
+        <div class="fluid ui button"><strong>толстый</strong></div><br/>
+        <div class="fluid ui button"><strong>образованный</strong></div><br/>
+        <div class="fluid ui button"><strong>талантливый</strong></div><br/>
+        <hr/><br/>
+        <div class="fluid ui button"><strong>я не знаю</strong></div>
+      </div>
+      <div class="ui four wide column">&nbsp;</div>
+    </div>
+    <script>$('.progress').progress({showActivity:false});</script>
   </body>
 </html>

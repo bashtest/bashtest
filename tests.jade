@@ -1,0 +1,28 @@
+mixin test(lang,num,total,question,questionbig,answers)
+    .ui.page.grid
+        .ui.sixteen.wide.column
+            br
+            .ui.yellow.small.progress(data-value=num, data-total=total)
+                .bar
+
+        .ui.four.wide.column
+            h1= num+'/'+total
+        .ui.eight.wide.column.centeredcontent
+            img.ui.tiny.circular.image(src='tempimage.png')
+            h3= question
+            h1= questionbig
+            - for (var i=0; i<answers.length; i++)
+                .fluid.ui.button
+                    strong= answers[i]
+                br
+            hr
+            br
+            .fluid.ui.button
+                strong= lang.dontknow
+        .ui.four.wide.column &nbsp;
+
+
+mixin tests(lang)
+    +test(lang,4,30,'Выберите правильный перевод','укымышлы',['толстый', 'образованный', 'талантливый'])
+    script.
+        $('.progress').progress({showActivity:false});

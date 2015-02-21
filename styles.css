@@ -1,0 +1,13 @@
+.page {
+    background-color: white;
+}
+.centeredcontent {
+    text-align: center;
+}
+.centeredcontent img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.itemcontent {
+    width: 120px;
+}
