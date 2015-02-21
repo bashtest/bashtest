@@ -1,19 +1,23 @@
-mixin test(lang,num,total,question,questionbig,answers)
+mixin test(lang,i)
+    - var qa = lang.qa
+    - var count = qa.length
+    - var num = i+1
+    - var currqa = qa[i]
     .ui.page.grid
         .ui.sixteen.wide.column
             br
-            .ui.yellow.small.progress(data-value=num, data-total=total)
+            .ui.yellow.small.progress(data-value=num, data-total=count)
                 .bar
 
         .ui.four.wide.column
-            h1= num+'/'+total
+            h1= num+'/'+count
         .ui.eight.wide.column.centeredcontent
             img.ui.tiny.circular.image(src='tempimage.png')
-            h3= question
-            h1= questionbig
-            - for (var i=0; i<answers.length; i++)
+            h3= currqa[0]
+            h1= currqa[1]
+            - for (var i=0; i<currqa[2].length; i++)
                 .fluid.ui.big.button
-                    strong= answers[i]
+                    strong= currqa[2][i]
                 br
             hr
             br
@@ -23,6 +27,7 @@ mixin test(lang,num,total,question,questionbig,answers)
 
 
 mixin tests(lang)
-    +test(lang,4,30,'Выберите правильный перевод','уҡымышлы',['толстый', 'образованный', 'талантливый'])
+    - for (var i=0; i<lang.qa.length; i++)
+        +test(lang,i)
     script.
         $('.progress').progress({showActivity:false});
