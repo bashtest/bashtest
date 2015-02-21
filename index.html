@@ -11,12 +11,12 @@
     <title>Тест на уровень знаний башкирского языка</title>
   </head>
   <body>
-    <div class="ui page grid">
+    <div data-bind="visible: page()=='start'" class="ui page grid">
       <div class="ui two wide column">&nbsp;</div>
       <div class="ui twelve wide column centeredcontent"><br/><br/><img src="tempimage.png" class="ui small circular image"/>
         <h1 class="ui header">Узнайте, насколько хорошо вы владеете башкирским языком</h1>
         <h3 class="ui header">Дополнительный текст с пояснениями</h3>
-        <div class="ui yellow huge button">Начать</div>
+        <div data-bind="click: function(){ page('0'); }" class="ui yellow huge button">Начать</div>
       </div>
       <div class="ui two wide column">&nbsp;</div>
       <div class="ui eight wide column"><br/><strong>Copyright</strong></div>
@@ -26,7 +26,7 @@
             <div class="content itemcontent">Белемле башҡорт</div></a></div>
       </div>
     </div>
-    <div class="ui page grid">
+    <div data-bind="visible: page()=='0'" class="ui page grid">
       <div class="ui sixteen wide column"><br/>
         <div data-value='1' data-total='3' class="ui yellow small progress">
           <div class="bar"></div>
@@ -42,11 +42,11 @@
         <div class="fluid ui big button"><strong>образованный</strong></div><br/>
         <div class="fluid ui big button"><strong>талантливый</strong></div><br/>
         <hr/><br/>
-        <div class="fluid ui big button"><strong>я не знаю</strong></div>
+        <div data-bind="click: function(){ page('1'); }" class="fluid ui big button"><strong>я не знаю</strong></div>
       </div>
       <div class="ui four wide column">&nbsp;</div>
     </div>
-    <div class="ui page grid">
+    <div data-bind="visible: page()=='1'" class="ui page grid">
       <div class="ui sixteen wide column"><br/>
         <div data-value='2' data-total='3' class="ui yellow small progress">
           <div class="bar"></div>
@@ -62,11 +62,11 @@
         <div class="fluid ui big button"><strong>растение</strong></div><br/>
         <div class="fluid ui big button"><strong>животное</strong></div><br/>
         <hr/><br/>
-        <div class="fluid ui big button"><strong>я не знаю</strong></div>
+        <div data-bind="click: function(){ page('2'); }" class="fluid ui big button"><strong>я не знаю</strong></div>
       </div>
       <div class="ui four wide column">&nbsp;</div>
     </div>
-    <div class="ui page grid">
+    <div data-bind="visible: page()=='2'" class="ui page grid">
       <div class="ui sixteen wide column"><br/>
         <div data-value='3' data-total='3' class="ui yellow small progress">
           <div class="bar"></div>
@@ -82,7 +82,7 @@
         <div class="fluid ui big button"><strong>хайуан</strong></div><br/>
         <div class="fluid ui big button"><strong>СДЛС</strong></div><br/>
         <hr/><br/>
-        <div class="fluid ui big button"><strong>я не знаю</strong></div>
+        <div data-bind="click: function(){ page('3'); }" class="fluid ui big button"><strong>я не знаю</strong></div>
       </div>
       <div class="ui four wide column">&nbsp;</div>
     </div>

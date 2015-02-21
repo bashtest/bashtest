@@ -3,7 +3,7 @@ mixin test(lang,i)
     - var count = qa.length
     - var num = i+1
     - var currqa = qa[i]
-    .ui.page.grid
+    .ui.page.grid(data-bind!='visible: page()==\'' + i + '\'')
         .ui.sixteen.wide.column
             br
             .ui.yellow.small.progress(data-value=num, data-total=count)
@@ -15,13 +15,13 @@ mixin test(lang,i)
             img.ui.tiny.circular.image(src='tempimage.png')
             h3= currqa[0]
             h1= currqa[1]
-            - for (var i=0; i<currqa[2].length; i++)
+            - for (var j=0; j<currqa[2].length; j++)
                 .fluid.ui.big.button
-                    strong= currqa[2][i]
+                    strong= currqa[2][j]
                 br
             hr
             br
-            .fluid.ui.big.button
+            .fluid.ui.big.button(data-bind!='click: function(){ page(\'' + num + '\'); }')
                 strong= lang.dontknow
         .ui.four.wide.column &nbsp;
 

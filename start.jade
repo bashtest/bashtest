@@ -1,5 +1,5 @@
 mixin start(lang)
-    .ui.page.grid
+    .ui.page.grid(data-bind!='visible: page()==\'start\'')
         .ui.two.wide.column &nbsp;
         .ui.twelve.wide.column.centeredcontent
             br
@@ -7,7 +7,7 @@ mixin start(lang)
             img.ui.small.circular.image(src='tempimage.png')
             h1.ui.header= lang.howgoodtitle
             h3.ui.header= lang.howgoodbody
-            .ui.yellow.huge.button= lang.begin
+            .ui.yellow.huge.button(data-bind!='click: function(){ page(\'0\'); }')= lang.begin
         .ui.two.wide.column &nbsp;
 
         .ui.eight.wide.column
