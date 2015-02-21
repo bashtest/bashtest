@@ -12,12 +12,12 @@ mixin test(lang,num,total,question,questionbig,answers)
             h3= question
             h1= questionbig
             - for (var i=0; i<answers.length; i++)
-                .fluid.ui.button
+                .fluid.ui.big.button
                     strong= answers[i]
                 br
             hr
             br
-            .fluid.ui.button
+            .fluid.ui.big.button
                 strong= lang.dontknow
         .ui.four.wide.column &nbsp;
 
