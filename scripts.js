@@ -5,10 +5,7 @@ $(function() {
     var main = {};
     main.page = ko.observable('start');
     main.page.subscribe(function(){
-        VK.callMethod('resizeWindow', {
-            width: document.body.offsetWidth,
-            height: document.body.clientHeight
-        });
+        VK.callMethod('resizeWindow', document.getElementById('body').offsetWidth, document.getElementById('body').clientHeight);
     });
     main.page.valueHasMutated();
 
