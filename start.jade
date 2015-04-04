@@ -1,24 +1,23 @@
-mixin start(lang)
-    .ui.page.grid(data-bind!='visible: page()==\'start\'')
-        .ui.two.wide.column &nbsp;
-        .ui.twelve.wide.column.centeredcontent
-            br
-            br
-            img.ui.small.circular.image(src='tempimage.png')
-            h1.ui.header= lang.howgoodtitle
-            h3.ui.header= lang.howgoodbody
-            .ui.yellow.huge.button(data-bind!='click: function(){ page(\'0\'); }')= lang.begin
-        .ui.two.wide.column &nbsp;
+.ui.page.grid(data-bind!='visible: page()==\'start\'')
+    .ui.two.wide.column &nbsp;
+    .ui.twelve.wide.column.centeredcontent
+        br
+        br
+        img.ui.small.circular.image(src='tempimage.png')
+        h1.ui.header Узнайте, насколько хорошо вы владеете башкирским языком
+        h3.ui.header Дополнительный текст с пояснениями
+        .ui.yellow.huge.button(data-bind!='click: function(){ page(\'tests\'); }') Начать
+    .ui.two.wide.column &nbsp;
 
-        .ui.eight.wide.column
-            br
-            strong= lang.copyright
-        .ui.eight.wide.column
-            .ui.horizontal.list
-                a.item(href='#')
-                    img.ui.avatar.image(src='tempimage.png')
-                    .content.itemcontent= lang.bashprojects
-                a.item(href='#')
-                    img.ui.avatar.image(src='tempimage.png')
-                    .content.itemcontent= lang.cleverbash
-    span
+    .ui.eight.wide.column
+        br
+        strong Copyright
+    .ui.eight.wide.column
+        .ui.horizontal.list
+            a.item(href='#')
+                img.ui.avatar.image(src='tempimage.png')
+                .content.itemcontent Башкирские проекты
+            a.item(href='#')
+                img.ui.avatar.image(src='tempimage.png')
+                .content.itemcontent Умный башкир
+span

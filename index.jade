@@ -1,15 +1,9 @@
-include start
-include tests
-include lang
-- var lang = ba
-- lang.qa = qa
-
 doctype html
 html
     head
         meta(charset='utf-8')
         include includes
-        title= lang.title
+        title Тест
     body(id='body')
-        +start(lang)
-        +tests(lang)
+        include start
+        include tests

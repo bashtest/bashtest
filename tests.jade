@@ -1,34 +1,21 @@
-mixin test(lang,i)
-    - var qa = lang.qa
-    - var count = qa.length
-    - var num = i+1
-    - var currqa = qa[i]
-    .ui.page.grid(data-bind!='visible: page()==\'' + i + '\'')
-        .ui.sixteen.wide.column
+.ui.page.grid(data-bind!='visible: page()==\'tests\'')
+    .ui.sixteen.wide.column
+        br
+        .ui.yellow.small.progress#progress(data-bind!='attr: {\'data-value\': current()+1, \'data-total\': count()}')
+            .bar
+
+    .ui.four.wide.column
+        h1(data-bind!='text: (current()+1) + \'\/\' + count()')
+    .ui.eight.wide.column.centeredcontent
+        img.ui.tiny.circular.image(src='tempimage.png')
+        h3(data-bind!='text: currentQuestion().tasktext')
+        h1(data-bind!='text: currentQuestion().question')
+        div(data-bind='foreach: currentQuestion().variants')
+            .fluid.ui.big.button(data-bind='text: $data, click: $root.toAnswer')
             br
-            .ui.yellow.small.progress(data-value=num, data-total=count)
-                .bar
-
-        .ui.four.wide.column
-            h1= num+'/'+count
-        .ui.eight.wide.column.centeredcontent
-            img.ui.tiny.circular.image(src='tempimage.png')
-            h3= currqa[0]
-            h1= currqa[1]
-            - for (var j=0; j<currqa[2].length; j++)
-                .fluid.ui.big.button
-                    strong= currqa[2][j]
-                br
-            hr
-            br
-            .fluid.ui.big.button(data-bind!='click: function(){ page(\'' + num + '\'); }')
-                strong= lang.dontknow
-        .ui.four.wide.column &nbsp;
-    span
-
-
-mixin tests(lang)
-    - for (var i=0; i<lang.qa.length; i++)
-        +test(lang,i)
-    script.
-        $('.progress').progress({showActivity:false});
+        hr
+        br
+        .fluid.ui.big.button(data-bind!='click: function() { toAnswer(-1); }')
+            strong Не знаю
+    .ui.four.wide.column &nbsp;
+span
