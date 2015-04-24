@@ -11,7 +11,6 @@ $(function() {
 
     main.ball = ko.observable(0);
     main.page = ko.observable('start');
-<<<<<<< HEAD
 
     main.questions = ko.computed(function(){
     	var testQuestions = [];
@@ -46,13 +45,6 @@ $(function() {
     main.current.subscribe(function(current){
     	$('#progress').progress();
     //     VK.callMethod('resizeWindow', document.getElementById('body').offsetWidth, document.getElementById('body').clientHeight);
-=======
-    main.page.subscribe(function(){
-        VK.callMethod('resizeWindow', {
-            width: document.body.offsetWidth,
-            height: document.body.clientHeight
-        });
->>>>>>> parent of 276e96b... еще одна попытка...
     });
     main.page.valueHasMutated();
 
