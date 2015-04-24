@@ -1,11 +1,11 @@
 .ui.page.grid(data-bind!='visible: page()==\'tests\'')
     .ui.sixteen.wide.column
         br
-        .ui.yellow.small.progress#progress(data-bind!='attr: {\'data-value\': current()+1, \'data-total\': count()}')
+        .ui.yellow.small.progress#progress(data-bind!="attr: {'data-total': count()}", data-value='1')
             .bar
 
     .ui.four.wide.column
-        h1(data-bind!='text: (current()+1) + \'\/\' + count()')
+        h1(data-bind!="text: (current()+1) + '/' + count()")
     .ui.eight.wide.column.centeredcontent
         img.ui.tiny.circular.image(src='tempimage.png')
         h3(data-bind!='text: currentQuestion().tasktext')

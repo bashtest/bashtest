@@ -25,7 +25,6 @@ $(function() {
     	return testQuestions;
     });
     main.count = ko.computed(function(){
-    	console.log(main.questions());
     	return main.questions().length;
     });
 
@@ -33,13 +32,17 @@ $(function() {
     main.currentQuestion = ko.computed(function(){
     	return main.questions()[main.current()];
     });
-    // main.numTitle = ko.computed(function(){
-    // 	return (main.current()+1) + '/' + main.count();
-    // });
+
     main.toAnswer = function(answer){
     	if (main.currentQuestion().variants[main.currentQuestion().answer] == answer)
     		main.ball(main.ball()+1);
-    	main.current(main.current()+1);
+		if (main.current()+1 == main.count()){
+			console.log('вопросы закончились! переходим к результату...');
+			//main.page('result');
+		} else {
+    		main.current(main.current()+1); console.log(main.current());
+			$('#progress').progress('increment');
+		}
     }
 
     main.current.subscribe(function(current){
