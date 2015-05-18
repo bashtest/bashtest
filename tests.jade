@@ -1,7 +1,7 @@
 .ui.page.grid(data-bind!='visible: page()==\'tests\'')
     .ui.sixteen.wide.column
         br
-        .ui.yellow.small.progress#progress(data-bind!="attr: {'data-total': count()}", data-value='1')
+        .ui.yellow.small.progress#progress
             .bar
 
     .ui.four.wide.column
@@ -18,4 +18,5 @@
         .fluid.ui.big.button(data-bind!='click: function() { toAnswer(-1); }')
             strong Не знаю
     .ui.four.wide.column &nbsp;
+    include bottom_links
 span

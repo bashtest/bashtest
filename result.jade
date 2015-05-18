@@ -1,0 +1,22 @@
+.ui.page.grid(data-bind!='visible: page()==\'result\'')
+    
+    .ui.eight.wide.column
+        .ui.image(style='float: right; margin-right: 30px;')
+            .ui.teal.ribbon.label Истинный знаток башкирского языка
+            img(data-bind='attr: {src: myava}')
+    .ui.eight.wide.column
+        .ui.circular.segment.centered
+            .ui.red.huge.statistic
+                .label Правильных ответов
+                .value(data-bind="text: Math.round(partball()*100) + \"%\"")
+        br
+        .ui.blue.tiny.statistic
+            .label Уровень
+            .value(data-bind='text: level')
+        .ui.header(data-bind='text: description')
+    .ui.eight.wide.column
+        .ui.fluid.yellow.button(data-bind="click: postResult") Рассказать друзьям
+    .ui.eight.wide.column
+        .ui.fluid.yellow.button(data-bind!='click: page.bind(null, \'start\')') На главную
+    include bottom_links
+span

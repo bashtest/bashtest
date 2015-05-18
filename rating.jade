@@ -1,0 +1,15 @@
+.ui.page.grid(data-bind!='visible: page()==\'rating\'')
+    .ui.sixteen.wide.column
+        .ui.large.yellow.header Рекорды за последние сутки
+        .ui.celled.list.mylist(data-bind="foreach: ratingFull")
+            .item
+                .right.floated(data-bind="text: ball" style='font-size: 2em; padding-right: 1em;')
+                img.ui.avatar.image(data-bind="attr: {src: ava}")
+                .content
+                    a.header(target="_blank", data-bind="attr: {href: '//vk.com/id'+id}, text: name")
+                    span(data-bind="text: level")
+    .ui.eight.wide.column
+        .ui.fluid.yellow.button(data-bind="click: refreshRating") Обновить
+    .ui.eight.wide.column
+        .ui.fluid.yellow.button(data-bind!='click: page.bind(null, \'start\')') На главную
+span

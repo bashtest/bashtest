@@ -20,11 +20,13 @@ function getDescr(partball){
 
 $(function() {
 
+	var ishttps = location.protocol == 'https:';
+	var userid = +location.href.match(/viewer_id\=(\d+)\&/)[1];
+
     var main = {};
 
     main.page = ko.observable('start');
     main.ball = ko.observable(0);
-
     main.questions = ko.computed(function(){
     	var testQuestions = [];
     	for (var i=0; i<questions.length; i++){
@@ -63,6 +65,7 @@ $(function() {
     		main.ball(main.ball()+1);
 		if (main.current()+1 == main.count()){
 			main.page('result');
+			$.get('db.php', {act: 'add', id: userid, ball: main.ball()});
 		} else {
     		main.current(main.current()+1);
 			$('#progress').progress('increment');
@@ -79,7 +82,6 @@ $(function() {
 		}
     //     VK.callMethod('resizeWindow', document.getElementById('body').offsetWidth, document.getElementById('body').clientHeight);
     });
-    main.page.valueHasMutated();
 
 	main.postResult = function(){
 
@@ -88,17 +90,21 @@ $(function() {
 	main.rating = ko.observableArray();
 	main.ratingFull = ko.observableArray();
 	main.rating.subscribe(function (newValues){
-		var res = newValues.map(function(item){
-			var partball = Math.round((+item.ball)/main.count() * 100);
-			return {
-				id: item.id,
-				name: 'Иванов Иван',
-				ava: 'tempimage.png',
-				ball: partball + '%',
-				level: getLevel(partball/100)
-			};
+		var ids = newValues.map(function(item){ return item.id }).join(',');
+		VK.api('users.get', {user_ids: ids, fields: 'photo_50'}, function(response){
+			var res = newValues.map(function(item, i){
+				var data = response.response[i];
+				var partball = Math.round((+item.ball)/main.count() * 100);
+				return {
+					id: item.id,
+					name: data.first_name + ' ' + data.last_name,
+					ava: data.photo_50,
+					ball: partball + '%',
+					level: getLevel(partball/100)
+				};
+			});
+			main.ratingFull(res);
 		});
-		main.ratingFull(res);
 	});
 
     main.refreshRating = function(){
@@ -107,9 +113,33 @@ $(function() {
 	    });
 	}
 
-    ko.applyBindings(main, document.body);
+    main.page.subscribe(function(newPage){
+    	if (newPage == 'rating')
+    		main.refreshRating();
+    	if (newPage == 'tests') {
+    		main.current(0);
+		    main.ball(0);
+		    $('#progress').progress('reset');
+    	}
 
-    main.refreshRating();
+    });
+
+    main.myava = ko.observable('');
+    main.refreshMyava = function(){
+    	VK.api('users.get', {id: userid, fields: 'photo_400_orig'}, function(response){ console.log(response);
+    		var photo = response.response[0].photo_400_orig;
+    		main.myava(photo);
+    	})
+    }
+
+	VK.init(function(){
+	    ko.applyBindings(main, document.body);
+	    main.refreshRating();
+	    main.refreshMyava();
+	    main.page.valueHasMutated();
+	},function(){
+		alert('Error initialing VK!');
+	});
 
     window.main = main;
 });

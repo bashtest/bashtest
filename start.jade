@@ -1,23 +1,12 @@
 .ui.page.grid(data-bind!='visible: page()==\'start\'')
     .ui.two.wide.column &nbsp;
     .ui.twelve.wide.column.centeredcontent
-        br
-        br
-        img.ui.small.circular.image(src='tempimage.png')
+        //- урталагы фотохурат
+        img.ui.medium.rounded.image(src='temp_image.jpg')
         h1.ui.header Узнайте, насколько хорошо вы владеете башкирским языком
-        h3.ui.header Дополнительный текст с пояснениями
-        .ui.yellow.huge.button(data-bind!='click: function(){ page(\'tests\'); }') Начать
+        //-h3.ui.header Дополнительный текст с пояснениями
+        .ui.yellow.huge.button(data-bind!='click: page.bind(null, \'tests\')') Начать
+        .ui.yellow.huge.button(data-bind!='click: page.bind(null, \'rating\')') Рейтинг
     .ui.two.wide.column &nbsp;
-
-    .ui.eight.wide.column
-        br
-        strong Copyright
-    .ui.eight.wide.column
-        .ui.horizontal.list
-            a.item(href='#')
-                img.ui.avatar.image(src='tempimage.png')
-                .content.itemcontent Башкирские проекты
-            a.item(href='#')
-                img.ui.avatar.image(src='tempimage.png')
-                .content.itemcontent Умный башкир
+    include bottom_links
 span
