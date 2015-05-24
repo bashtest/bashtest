@@ -66,7 +66,7 @@ var questions = [ // база вопросов
 					"железо"
 				],
 				answer: 1
-			}
+			},
 			{
 				question: "тау",
 				variants: [
@@ -75,7 +75,7 @@ var questions = [ // база вопросов
 					"гора"
 				],
 				answer: 2
-			}
+			},
 			{
 				question: "китап",
 				variants: [
